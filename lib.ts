@@ -109,6 +109,18 @@ export class kleinElementNode {
         this.flag.set(key, val)
         return this
     }
+    setAttribute(key: string, val: any) {
+        this.changes.push(()=>{
+            this.htmlNode.setAttribute(key, val)
+        })
+        return this
+    }
+    getAttribute(key: string) {
+        if (this.htmlNode) {
+            return this.htmlNode.getAttribute(key)
+        }
+        return null
+    }
 
     addClass(className: string) {
         

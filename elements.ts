@@ -227,3 +227,20 @@ export class rangeInput extends kleinElementNode {
         return this
     }
 }
+
+export class fileInput extends kleinElementNode {
+    htmlNode: HTMLInputElement
+    name = "fileInput"
+    render(target: HTMLElement): void {
+        let element = document.createElement("input")
+        element.type = "file"
+        renderBasics(this, element)
+        target.appendChild(element)
+    }
+    setValue(val: string) {
+        this.changes.push(()=>{
+            this.htmlNode.value = val
+        })
+        return this
+    }
+}
