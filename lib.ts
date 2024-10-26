@@ -229,10 +229,10 @@ export class kleinElementNode {
     parent: kleinElementNode | undefined
 
 
-    render(target: HTMLElement) {
+    render(target: HTMLElement, noAppend?: boolean) {
         let element = document.createElement("div")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
     
     rerender() {
@@ -390,10 +390,10 @@ export class kleinTextNode extends kleinElementNode {
         this.content = content
     }
     textNode: Text
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let n = document.createTextNode(this.content)
         this.textNode = n
-        target.appendChild(n)
+        if (!noAppend) target.appendChild(n)
     }
     rerender(): void {
         this.textNode.data = this.content

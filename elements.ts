@@ -3,19 +3,19 @@ import { kleinElementNode, renderBasics } from "./lib"
 export class button extends kleinElementNode {
     htmlNode: HTMLButtonElement
     name = "button"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("button")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 export class container extends kleinElementNode {
     htmlNode: HTMLDivElement
     name = "container"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("div")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
@@ -23,7 +23,7 @@ export class canvas extends kleinElementNode {
     htmlNode: HTMLCanvasElement
     name = "canvas"
     canvas = document.createElement("canvas")
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         renderBasics(this, this.canvas)
         target.appendChild(this.canvas)
     }
@@ -40,10 +40,10 @@ export class canvas extends kleinElementNode {
 export class unorderedList extends kleinElementNode {
     htmlNode: HTMLUListElement
     name = "unordered-list"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("ul")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
     
 }
@@ -51,20 +51,20 @@ export class unorderedList extends kleinElementNode {
 export class listItem extends kleinElementNode {
     htmlNode: HTMLLIElement
     name = "list-item"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("li")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
 export class orderedList extends kleinElementNode {
     htmlNode: HTMLOListElement
     name = "ordered-list"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("ol")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 export class image extends kleinElementNode {
@@ -76,10 +76,10 @@ export class image extends kleinElementNode {
         })
         return this
     }
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("img")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
@@ -105,10 +105,10 @@ export class video extends kleinElementNode {
         })
         return this
     }
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("video")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
@@ -134,10 +134,10 @@ export class audio extends kleinElementNode {
         })
         return this
     }
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("audio")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
@@ -150,51 +150,51 @@ export class link extends kleinElementNode {
         })
         return this
     }
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("a") as HTMLAnchorElement
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
 export class paragraph extends kleinElementNode {
     htmlNode: HTMLParagraphElement
     name = "paragraph"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("p")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
 export class header1 extends kleinElementNode {
     htmlNode: HTMLHeadingElement
     name = "header1"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("h1")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
 export class header2 extends kleinElementNode {
     htmlNode: HTMLHeadingElement
     name = "header2"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("h2")
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
 }
 
 export class textInput extends kleinElementNode {
     htmlNode: HTMLInputElement
     name = "textInput"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("input")
         element.type = "text"
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
     setValue(val: string) {
         this.changes.push(()=>{
@@ -207,11 +207,11 @@ export class textInput extends kleinElementNode {
 export class rangeInput extends kleinElementNode {
     htmlNode: HTMLInputElement
     name = "rangeInput"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("input")
         element.type = "range"
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
     setRange(min: number, max: number) {
         this.changes.push(()=>{
@@ -231,11 +231,11 @@ export class rangeInput extends kleinElementNode {
 export class fileInput extends kleinElementNode {
     htmlNode: HTMLInputElement
     name = "fileInput"
-    render(target: HTMLElement): void {
+    render(target: HTMLElement, noAppend?: boolean): void {
         let element = document.createElement("input")
         element.type = "file"
         renderBasics(this, element)
-        target.appendChild(element)
+        if (!noAppend) target.appendChild(element)
     }
     setValue(val: string) {
         this.changes.push(()=>{
